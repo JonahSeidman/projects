@@ -4,32 +4,32 @@ window.GALLERY_DATA = {
   "subtitle": "A collection of things I've built.",
   "items": [
     {
-      "src": "images/01.png",
+      "src": "images/1.png",
       "title": "",
       "description": ""
     },
     {
-      "src": "images/02.png",
+      "src": "images/2.png",
       "title": "",
       "description": ""
     },
     {
-      "src": "images/03.png",
+      "src": "images/3.png",
       "title": "",
       "description": ""
     },
     {
-      "src": "images/04.png",
+      "src": "images/4.png",
       "title": "",
       "description": ""
     },
     {
-      "src": "images/05.png",
+      "src": "images/5.png",
       "title": "",
       "description": ""
     },
     {
-      "src": "images/06.png",
+      "src": "images/6.png",
       "title": "",
       "description": ""
     }
