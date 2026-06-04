@@ -45,6 +45,7 @@ function main() {
 
   const captions = readJsonSafe(path.join(IMAGES_DIR, "captions.json"));
   const site = readJsonSafe(path.join(ROOT, "site.json"));
+  const showCaptions = site.captions !== false;
 
   const files = fs
     .readdirSync(IMAGES_DIR)
@@ -55,8 +56,12 @@ function main() {
     const meta = captions[file] || {};
     return {
       src: "images/" + encodeURIComponent(file),
-      title: meta.title !== undefined ? meta.title : prettify(file),
-      description: meta.description || "",
+      title: showCaptions
+        ? meta.title !== undefined
+          ? meta.title
+          : prettify(file)
+        : "",
+      description: showCaptions ? meta.description || "" : "",
     };
   });
 

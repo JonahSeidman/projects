@@ -4,19 +4,34 @@ window.GALLERY_DATA = {
   "subtitle": "A collection of things I've built.",
   "items": [
     {
-      "src": "images/01-first-project.svg",
-      "title": "Project One",
-      "description": "Swap this placeholder for a real photo and edit this caption."
+      "src": "images/01.png",
+      "title": "",
+      "description": ""
     },
     {
-      "src": "images/02-second-project.svg",
-      "title": "Project Two",
-      "description": "Titles default to the filename if you delete this file."
+      "src": "images/02.png",
+      "title": "",
+      "description": ""
     },
     {
-      "src": "images/03-third-project.svg",
-      "title": "Project Three",
-      "description": "Optional — captions.json is not required."
+      "src": "images/03.png",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/04.png",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/05.png",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/06.png",
+      "title": "",
+      "description": ""
     }
   ]
 };
