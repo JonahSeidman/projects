@@ -66,13 +66,14 @@ body {
 main { padding: 48px 0 80px; }
 
 .gallery {
-  columns: 3 280px;
-  column-gap: 18px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 18px;
+  align-items: start;
 }
 
 .card {
-  break-inside: avoid;
-  margin: 0 0 18px;
+  margin: 0;
   background: var(--bg-elevated);
   border: 1px solid var(--border);
   border-radius: var(--radius);
