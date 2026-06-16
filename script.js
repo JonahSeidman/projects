@@ -76,7 +76,11 @@ const ERAS = [
       },
       {
         title: "Meteor-M3",
-        media: [{ type: "image", src: "images/meteor.png" }],
+        media: [
+          { type: "image", src: "images/asr-1.png" },
+          { type: "image", src: "images/asr-2.png" },
+          { type: "image", src: "images/meteor.png" },
+        ],
       },
     ],
   },
