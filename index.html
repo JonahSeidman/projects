@@ -3,46 +3,65 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Projects</title>
-  <meta name="description" content="A gallery of my projects." />
+  <title>Jonah Seidman — Projects</title>
+  <meta name="description" content="A progression of things I've built — from an 8th-grade RFID door lock to satellite imagery and boat electronics." />
+  <meta name="theme-color" content="#0a0c10" />
+  <meta property="og:title" content="Jonah Seidman — Projects" />
+  <meta property="og:description" content="A progression of things I've built." />
+  <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📷</text></svg>" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" />
+  <link rel="stylesheet" href="styles.css?v=2" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛠️</text></svg>" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="wrap">
-      <h1 class="site-title" id="siteTitle">My Projects</h1>
-      <p class="site-subtitle" id="siteSubtitle">A collection of things I've built.</p>
+  <nav class="nav" id="nav">
+    <a class="nav-brand" href="#top">Jonah Seidman</a>
+    <div class="nav-links" id="navLinks"></div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Builder · since 8th grade</p>
+      <h1 class="hero-title">Things I've<br />built.</h1>
+      <p class="hero-sub">A progression — from a door lock I made in 8th grade to satellites, cars, and boats.</p>
+      <a class="hero-cue" href="#era-eighth-grade" aria-label="Start the tour">
+        <span>Start the tour</span>
+        <span class="hero-cue-arrow">↓</span>
+      </a>
     </div>
+    <div class="hero-glow" aria-hidden="true"></div>
   </header>
 
-  <main class="wrap">
-    <section id="gallery" class="gallery" aria-label="Project gallery"></section>
-    <p id="emptyState" class="empty-state" hidden>
-      No photos yet. Drop image files into the <code>images/</code> folder
-      and run <code>npm run build</code>.
-    </p>
-  </main>
+  <main class="timeline" id="timeline"><!-- rendered by script.js --></main>
 
   <footer class="site-footer">
-    <div class="wrap">
-      <p>&copy; <span id="year"></span> · Built with care.</p>
+    <div class="footer-inner">
+      <p class="footer-lead">Still building.</p>
+      <div class="footer-links">
+        <a href="mailto:jonahkais@gmail.com">jonahkais@gmail.com</a>
+        <span class="dot">·</span>
+        <a href="https://github.com/JonahSeidman" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <p class="footer-meta">&copy; <span id="year"></span> Jonah Seidman</p>
     </div>
   </footer>
 
   <!-- Lightbox -->
-  <div class="lightbox" id="lightbox" hidden aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="lb" id="lb" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="Image viewer">
     <button class="lb-close" id="lbClose" aria-label="Close">&times;</button>
     <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous">&#10094;</button>
-    <figure class="lb-figure">
-      <img id="lbImg" src="" alt="" />
-      <figcaption id="lbCaption"></figcaption>
-    </figure>
+    <img class="lb-img" id="lbImg" src="" alt="" />
     <button class="lb-nav lb-next" id="lbNext" aria-label="Next">&#10095;</button>
   </div>
 
-  <script src="gallery-data.js"></script>
-  <script src="script.js"></script>
+  <noscript>
+    <p style="text-align:center;padding:2rem;color:#cbd3df">
+      This portfolio renders with JavaScript. Please enable it to view the projects.
+    </p>
+  </noscript>
+
+  <script src="script.js?v=2"></script>
 </body>
 </html>

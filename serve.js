@@ -24,14 +24,19 @@ const TYPES = {
 
 const server = http.createServer((req, res) => {
   let urlPath = decodeURIComponent(req.url.split("?")[0]);
-  if (urlPath === "/") urlPath = "/index.html";
+  // Resolve directory requests to their index.html (matches GitHub Pages).
+  if (urlPath.endsWith("/")) urlPath += "index.html";
 
   // Prevent path traversal.
-  const filePath = path.join(ROOT, path.normalize(urlPath));
+  let filePath = path.join(ROOT, path.normalize(urlPath));
   if (!filePath.startsWith(ROOT)) {
     res.writeHead(403);
     return res.end("Forbidden");
   }
+  // If a bare directory was requested (no trailing slash), serve its index.html.
+  try {
+    if (fs.statSync(filePath).isDirectory()) filePath = path.join(filePath, "index.html");
+  } catch {}
 
   fs.readFile(filePath, (err, data) => {
     if (err) {
