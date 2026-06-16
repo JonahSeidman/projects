@@ -233,16 +233,21 @@ a { color: inherit; text-decoration: none; }
 .age-cols {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.6rem;
+  gap: 2.2rem;
   align-items: start;
 }
 .age-col { flex: 1 1 300px; min-width: 0; }
+/* divider between the separated age columns */
+.age-col + .age-col {
+  padding-left: 2.2rem;
+  border-left: 1px solid var(--border-strong);
+}
 .age-col-head {
-  font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+  font-size: clamp(1.8rem, 3.6vw, 2.6rem);
   font-weight: 800;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
   color: var(--accent);
-  margin: 0 0 0.8rem;
+  margin: 0 0 0.9rem;
 }
 .age-col-grid { grid-template-columns: 1fr; }
 
