@@ -20,6 +20,7 @@ const ERAS = [
     id: "boat",
     num: "02",
     name: "Boat Work",
+    note: 'Where <u>most of my time</u> goes.',
     projects: [
       {
         title: "The Boat",
@@ -56,6 +57,7 @@ const ERAS = [
         media: [
           { type: "image", src: "images/drone-1.png" },
           { type: "image", src: "images/drone-2.jpg" },
+          { type: "image", src: "images/drone-3.jpg" },
         ],
       },
     ],
@@ -156,6 +158,7 @@ function eraNode(era) {
   const meta = el("div", "era-meta");
   meta.appendChild(el("span", "era-num", era.num));
   meta.appendChild(el("h2", "era-name", era.name));
+  if (era.note) meta.appendChild(el("p", "era-note", era.note));
   head.appendChild(meta);
   section.appendChild(head);
 

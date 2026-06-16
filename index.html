@@ -12,10 +12,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
-  <link rel="stylesheet" href="styles.css?v=3" />
+  <link rel="stylesheet" href="styles.css?v=4" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛠️</text></svg>" />
 </head>
 <body>
+  <div class="vol" id="vol" aria-label="Music volume">
+    <button class="vol-btn" id="volBtn" type="button" aria-label="Mute music"></button>
+    <input class="vol-range" id="volRange" type="range" min="0" max="1" step="0.01" value="0.5" aria-label="Volume" />
+  </div>
+
   <header class="hero" id="top">
     <div class="hero-inner">
       <p class="hero-name">Jonah Seidman</p>
@@ -53,6 +58,7 @@
     </p>
   </noscript>
 
-  <script src="script.js?v=3"></script>
+  <script src="script.js?v=4"></script>
+  <script src="jazz.js?v=4"></script>
 </body>
 </html>
