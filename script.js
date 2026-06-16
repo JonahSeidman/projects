@@ -5,7 +5,6 @@ const ERAS = [
     id: "eighth-grade",
     num: "01",
     name: "8th Grade",
-    note: "Where it started.",
     projects: [
       {
         title: "RFID Door Lock",
@@ -18,57 +17,9 @@ const ERAS = [
     ],
   },
   {
-    id: "personal",
-    num: "02",
-    name: "Personal Projects",
-    note: "Building for the fun of it.",
-    projects: [
-      {
-        title: "Homemade FPV Drone",
-        media: [
-          { type: "image", src: "images/drone-1.png" },
-          { type: "image", src: "images/drone-2.jpg" },
-        ],
-      },
-    ],
-  },
-  {
-    id: "satellites",
-    num: "03",
-    name: "Satellites",
-    note: "Pulling images down from orbit.",
-    projects: [
-      {
-        title: "GOES Imagery",
-        media: [
-          { type: "image", src: "images/goes-1.png" },
-          { type: "image", src: "images/goes-2.png" },
-          { type: "image", src: "images/goes-3.png" },
-        ],
-      },
-      {
-        title: "Meteor-M3",
-        media: [{ type: "image", src: "images/meteor.png" }],
-      },
-    ],
-  },
-  {
-    id: "obd2",
-    num: "04",
-    name: "OBD-II Bluetooth Accessory",
-    note: "An accessory device for the car.",
-    projects: [
-      {
-        title: "",
-        media: [{ type: "image", src: "images/obd2.png" }],
-      },
-    ],
-  },
-  {
     id: "boat",
-    num: "05",
+    num: "02",
     name: "Boat Work",
-    note: "Where most of my time goes now.",
     projects: [
       {
         title: "The Boat",
@@ -92,6 +43,50 @@ const ERAS = [
       {
         title: "",
         media: [{ type: "video", src: "images/boat.mp4" }],
+      },
+    ],
+  },
+  {
+    id: "personal",
+    num: "03",
+    name: "Personal Projects",
+    projects: [
+      {
+        title: "Homemade FPV Drone",
+        media: [
+          { type: "image", src: "images/drone-1.png" },
+          { type: "image", src: "images/drone-2.jpg" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "satellites",
+    num: "04",
+    name: "Satellites",
+    projects: [
+      {
+        title: "GOES Imagery",
+        media: [
+          { type: "image", src: "images/goes-1.png" },
+          { type: "image", src: "images/goes-2.png" },
+          { type: "image", src: "images/goes-3.png" },
+        ],
+      },
+      {
+        title: "Meteor-M3",
+        media: [{ type: "image", src: "images/meteor.png" }],
+      },
+    ],
+  },
+  {
+    id: "obd2",
+    num: "05",
+    name: "OBD-II Bluetooth Accessory",
+    projects: [
+      {
+        title: "",
+        media: [{ type: "image", src: "images/obd2.png" }],
       },
     ],
   },
@@ -161,7 +156,6 @@ function eraNode(era) {
   const meta = el("div", "era-meta");
   meta.appendChild(el("span", "era-num", era.num));
   meta.appendChild(el("h2", "era-name", era.name));
-  if (era.note) meta.appendChild(el("p", "era-note", era.note));
   head.appendChild(meta);
   section.appendChild(head);
 
@@ -173,14 +167,7 @@ function eraNode(era) {
 
 function render() {
   const timeline = document.getElementById("timeline");
-  const navLinks = document.getElementById("navLinks");
-  ERAS.forEach((era) => {
-    timeline.appendChild(eraNode(era));
-    const link = el("a", "nav-link", era.name);
-    link.href = "#era-" + era.id;
-    link.dataset.target = "era-" + era.id;
-    navLinks.appendChild(link);
-  });
+  ERAS.forEach((era) => timeline.appendChild(eraNode(era)));
 }
 
 /* ---------- lightbox ---------- */
@@ -233,29 +220,6 @@ function wireObservers() {
     { rootMargin: "0px 0px -10% 0px", threshold: 0.08 }
   );
   document.querySelectorAll(".era, .project").forEach((n) => reveal.observe(n));
-
-  const links = document.querySelectorAll(".nav-link");
-  const spy = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((en) => {
-        if (en.isIntersecting) {
-          links.forEach((l) =>
-            l.classList.toggle("active", l.dataset.target === en.target.id)
-          );
-        }
-      });
-    },
-    { rootMargin: "-45% 0px -50% 0px" }
-  );
-  document.querySelectorAll(".era").forEach((n) => spy.observe(n));
-
-  // condense nav after leaving hero
-  const nav = document.getElementById("nav");
-  const hero = document.getElementById("top");
-  new IntersectionObserver(
-    ([e]) => nav.classList.toggle("nav--solid", !e.isIntersecting),
-    { rootMargin: "-70px 0px 0px 0px" }
-  ).observe(hero);
 }
 
 /* ---------- init ---------- */
