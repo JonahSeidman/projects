@@ -233,3 +233,13 @@ function wireObservers() {
 render();
 wireObservers();
 document.getElementById("year").textContent = new Date().getFullYear();
+
+// hero scroll cue: smooth-scroll to first era without adding a #hash to the URL
+const heroCue = document.getElementById("heroCue");
+if (heroCue) {
+  heroCue.addEventListener("click", (e) => {
+    e.preventDefault();
+    const first = document.querySelector(".era");
+    if (first) first.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+}
