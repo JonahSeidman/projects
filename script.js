@@ -62,10 +62,29 @@ const ERAS = [
     ],
   },
   {
-    id: "satellites",
+    id: "obd2",
     num: "04",
+    name: "OBD-II Bluetooth Accessory",
+    projects: [
+      {
+        title: "",
+        media: [{ type: "image", src: "images/obd2.png" }],
+      },
+    ],
+  },
+  {
+    id: "satellites",
+    num: "05",
     name: "Satellites",
     projects: [
+      {
+        title: "Meteor-M2",
+        media: [
+          { type: "image", src: "images/asr-1.png" },
+          { type: "image", src: "images/asr-2.png" },
+          { type: "image", src: "images/meteor.png" },
+        ],
+      },
       {
         title: "GOES Imagery",
         media: [
@@ -73,25 +92,6 @@ const ERAS = [
           { type: "image", src: "images/goes-2.png" },
           { type: "image", src: "images/goes-3.png" },
         ],
-      },
-      {
-        title: "Meteor-M3",
-        media: [
-          { type: "image", src: "images/asr-1.png" },
-          { type: "image", src: "images/asr-2.png" },
-          { type: "image", src: "images/meteor.png" },
-        ],
-      },
-    ],
-  },
-  {
-    id: "obd2",
-    num: "05",
-    name: "OBD-II Bluetooth Accessory",
-    projects: [
-      {
-        title: "",
-        media: [{ type: "image", src: "images/obd2.png" }],
       },
     ],
   },
