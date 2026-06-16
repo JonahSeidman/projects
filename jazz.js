@@ -183,6 +183,13 @@
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
+
+    // try to play immediately on open; if the browser blocks autoplay the
+    // gesture listeners above will start it on the first interaction
+    start();
+    if (ctx && ctx.state === "suspended") {
+      window.addEventListener("load", start, { once: true });
+    }
   }
 
   if (document.readyState === "loading")

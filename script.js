@@ -5,13 +5,14 @@ const ERAS = [
     id: "eighth-grade",
     num: "01",
     name: "8th Grade",
+    age: "12–13",
     projects: [
       {
         title: "RFID Door Lock",
         media: [
-          { type: "image", src: "images/rfid-1.png" },
-          { type: "image", src: "images/rfid-2.png" },
-          { type: "video", src: "images/rfid.mp4" },
+          { type: "image", src: "images/rfid-1.png", caption: "Age 13" },
+          { type: "image", src: "images/rfid-2.png", caption: "Age 13" },
+          { type: "video", src: "images/rfid.mp4", caption: "Age 12" },
         ],
       },
     ],
@@ -20,6 +21,7 @@ const ERAS = [
     id: "boat",
     num: "02",
     name: "Autonomous Sailboat",
+    age: "14–present",
     projects: [
       {
         title: "",
@@ -50,6 +52,7 @@ const ERAS = [
     id: "personal",
     num: "03",
     name: "Personal Projects",
+    age: "15",
     projects: [
       {
         title: "Homemade FPV Drone",
@@ -65,6 +68,7 @@ const ERAS = [
     id: "obd2",
     num: "04",
     name: "OBD-II Bluetooth Accessory",
+    age: "14",
     projects: [
       {
         title: "",
@@ -76,6 +80,7 @@ const ERAS = [
     id: "satellites",
     num: "05",
     name: "Satellites",
+    age: "16–present",
     projects: [
       {
         title: "Meteor-M2",
@@ -122,6 +127,7 @@ function mediaNode(item) {
     v.setAttribute("preload", "metadata");
     v.controls = false;
     wrap.appendChild(v);
+    if (item.caption) wrap.appendChild(el("figcaption", "media-cap", item.caption));
     return wrap;
   }
   const wrap = el("figure", "media media-image");
@@ -134,6 +140,7 @@ function mediaNode(item) {
   lightboxImages.push({ src: item.src });
   img.addEventListener("click", () => openLightbox(idx));
   wrap.appendChild(img);
+  if (item.caption) wrap.appendChild(el("figcaption", "media-cap", item.caption));
   return wrap;
 }
 
@@ -159,7 +166,9 @@ function eraNode(era) {
   const head = el("div", "era-head");
   head.appendChild(el("span", "era-dot"));
   const meta = el("div", "era-meta");
-  meta.appendChild(el("span", "era-num", era.num));
+  const numLine = el("span", "era-num", era.num);
+  if (era.age) numLine.appendChild(el("span", "era-age", "Age " + era.age));
+  meta.appendChild(numLine);
   meta.appendChild(el("h2", "era-name", era.name));
   if (era.note) meta.appendChild(el("p", "era-note", era.note));
   head.appendChild(meta);
