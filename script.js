@@ -19,11 +19,10 @@ const ERAS = [
   {
     id: "boat",
     num: "02",
-    name: "Boat Work",
-    note: 'Where <u>most of my time</u> goes.',
+    name: "Autonomous Sailboat",
     projects: [
       {
-        title: "The Boat",
+        title: "",
         media: [
           { type: "image", src: "images/boat-1.png" },
           { type: "image", src: "images/boat-2.jpg" },
