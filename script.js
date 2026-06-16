@@ -4,15 +4,23 @@ const ERAS = [
   {
     id: "eighth-grade",
     num: "01",
-    name: "8th Grade",
+    name: "",
     age: "12–13",
     projects: [
       {
         title: "RFID Door Lock",
-        media: [
-          { type: "image", src: "images/rfid-1.png", caption: "Age 13" },
-          { type: "image", src: "images/rfid-2.png", caption: "Age 13" },
-          { type: "video", src: "images/rfid.mp4", caption: "Age 12" },
+        groups: [
+          {
+            age: "12",
+            media: [{ type: "video", src: "images/rfid.mp4" }],
+          },
+          {
+            age: "13",
+            media: [
+              { type: "image", src: "images/rfid-1.png" },
+              { type: "image", src: "images/rfid-2.png" },
+            ],
+          },
         ],
       },
     ],
@@ -148,6 +156,21 @@ function projectNode(p) {
   const proj = el("article", "project");
   if (p.title) proj.appendChild(el("h3", "project-title", p.title));
 
+  // age-grouped columns: each column is headed by its age (the focal point)
+  if (p.groups) {
+    const cols = el("div", "age-cols");
+    p.groups.forEach((grp) => {
+      const col = el("div", "age-col");
+      col.appendChild(el("h4", "age-col-head", "Age " + grp.age));
+      const grid = el("div", "media-grid age-col-grid");
+      grp.media.forEach((m) => grid.appendChild(mediaNode(m)));
+      col.appendChild(grid);
+      cols.appendChild(col);
+    });
+    proj.appendChild(cols);
+    return proj;
+  }
+
   const onlyVideo = p.media.length === 1 && p.media[0].type === "video";
   const single = p.media.length === 1;
   const grid = el(
@@ -169,7 +192,7 @@ function eraNode(era) {
   const numLine = el("span", "era-num", era.num);
   if (era.age) numLine.appendChild(el("span", "era-age", "Age " + era.age));
   meta.appendChild(numLine);
-  meta.appendChild(el("h2", "era-name", era.name));
+  if (era.name) meta.appendChild(el("h2", "era-name", era.name));
   if (era.note) meta.appendChild(el("p", "era-note", era.note));
   head.appendChild(meta);
   section.appendChild(head);
