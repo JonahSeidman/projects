@@ -6,21 +6,21 @@ const ERAS = [
     num: "01",
     name: "",
     age: "12–13",
+    layout: "columns",
     projects: [
       {
+        age: "12",
+        title: "LED Array",
+        desc: "My first real build. An LED array rigged as the grand finale of a Rube Goldberg machine — the last step in the chain reaction was what switched it on. More about nailing the payoff than the circuit itself, but it's the project that got me hooked on making things.",
+        media: [{ type: "video", src: "images/led.mp4" }],
+      },
+      {
+        age: "13",
         title: "RFID Door Lock",
-        groups: [
-          {
-            age: "12",
-            media: [{ type: "video", src: "images/rfid.mp4" }],
-          },
-          {
-            age: "13",
-            media: [
-              { type: "image", src: "images/rfid-1.png" },
-              { type: "image", src: "images/rfid-2.png" },
-            ],
-          },
+        desc: "A door lock you open by tapping an RFID tag. The reader checks a scanned card against the ones it's allowed to recognize, and an authorized tag releases the lock while anything unknown keeps it shut. This was where I first wired a reader, a controller, and a physical actuator into one working system.",
+        media: [
+          { type: "image", src: "images/rfid-1.png" },
+          { type: "image", src: "images/rfid-2.png" },
         ],
       },
     ],
@@ -33,6 +33,7 @@ const ERAS = [
     projects: [
       {
         title: "",
+        desc: "The project I pour the most time into. A sailboat built to handle itself — steering and sail control run by the boat's own electronics instead of someone at the helm. It's an ongoing build, equal parts mechanical, electrical, and software.",
         media: [
           { type: "image", src: "images/boat-1.png" },
           { type: "image", src: "images/boat-2.jpg" },
@@ -45,6 +46,7 @@ const ERAS = [
       },
       {
         title: "Battery Management System",
+        desc: "Protection and monitoring for the boat's battery pack: overcurrent and undervoltage cutoffs, per-cell voltage monitoring, and current sensing — all reported up to a Raspberry Pi so the pack can be watched and logged in real time.",
         media: [
           { type: "image", src: "images/bms-1.jpg" },
           { type: "image", src: "images/bms-2.jpg" },
@@ -63,7 +65,8 @@ const ERAS = [
     age: "15",
     projects: [
       {
-        title: "Homemade FPV Drone",
+        title: "Homemade Drone",
+        desc: "A quadcopter I built from the frame up — not an FPV rig, just flown line-of-sight. Choosing the parts, wiring the electronics, and tuning it until it actually flew well was the whole point.",
         media: [
           { type: "image", src: "images/drone-1.png" },
           { type: "image", src: "images/drone-2.jpg" },
@@ -80,6 +83,7 @@ const ERAS = [
     projects: [
       {
         title: "",
+        desc: "A small accessory that plugs into a car's OBD-II port and streams the vehicle's data over Bluetooth — live readings pulled straight from the car's computer onto a phone.",
         media: [{ type: "image", src: "images/obd2.png" }],
       },
     ],
@@ -92,6 +96,7 @@ const ERAS = [
     projects: [
       {
         title: "Meteor-M2",
+        desc: "Imagery pulled from the Meteor-M polar-orbiting weather satellites as they passed overhead — received on a dish in my backyard and decoded into pictures, rather than downloaded from the internet.",
         media: [
           { type: "image", src: "images/asr-1.png" },
           { type: "image", src: "images/asr-2.png" },
@@ -100,6 +105,7 @@ const ERAS = [
       },
       {
         title: "GOES Imagery",
+        desc: "Weather imagery from the GOES geostationary satellites, captured the same way — my own backyard ground station receiving the downlink and turning it into images.",
         media: [
           { type: "image", src: "images/goes-1.png" },
           { type: "image", src: "images/goes-2.png" },
@@ -152,33 +158,38 @@ function mediaNode(item) {
   return wrap;
 }
 
-function projectNode(p) {
-  const proj = el("article", "project");
-  if (p.title) proj.appendChild(el("h3", "project-title", p.title));
+function mediaGrid(media, columns) {
+  const single = media.length === 1;
+  const onlyVideo = single && media[0].type === "video";
+  let cls = "media-grid";
+  if (columns) cls += " age-col-grid";
+  else cls += (single ? " media-grid--single" : "") + (onlyVideo ? " media-grid--video" : "");
+  const grid = el("div", cls);
+  media.forEach((m) => grid.appendChild(mediaNode(m)));
+  return grid;
+}
 
-  // age-grouped columns: each column is headed by its age (the focal point)
-  if (p.groups) {
-    const cols = el("div", "age-cols");
-    p.groups.forEach((grp) => {
-      const col = el("div", "age-col");
-      col.appendChild(el("h4", "age-col-head", "Age " + grp.age));
-      const grid = el("div", "media-grid age-col-grid");
-      grp.media.forEach((m) => grid.appendChild(mediaNode(m)));
-      col.appendChild(grid);
-      cols.appendChild(col);
-    });
-    proj.appendChild(cols);
-    return proj;
-  }
+// click-to-expand context for a project (native <details>, styled)
+function infoNode(p) {
+  const d = el("details", "proj-info");
+  const sum = el("summary", "proj-info-summary");
+  sum.innerHTML =
+    '<span class="proj-info-label">' + (p.title || "Details") +
+    '</span><span class="chev" aria-hidden="true">⌄</span>';
+  d.appendChild(sum);
+  d.appendChild(el("div", "proj-info-body", "<p>" + p.desc + "</p>"));
+  return d;
+}
 
-  const onlyVideo = p.media.length === 1 && p.media[0].type === "video";
-  const single = p.media.length === 1;
-  const grid = el(
-    "div",
-    "media-grid" + (single ? " media-grid--single" : "") + (onlyVideo ? " media-grid--video" : "")
-  );
-  p.media.forEach((m) => grid.appendChild(mediaNode(m)));
-  proj.appendChild(grid);
+function projectNode(p, columns) {
+  const proj = el("article", columns ? "project age-col" : "project");
+
+  if (columns && p.age) proj.appendChild(el("h3", "age-col-head", "Age " + p.age));
+
+  if (p.desc) proj.appendChild(infoNode(p));
+  else if (p.title) proj.appendChild(el("h3", "project-title", p.title));
+
+  proj.appendChild(mediaGrid(p.media, columns));
   return proj;
 }
 
@@ -197,8 +208,9 @@ function eraNode(era) {
   head.appendChild(meta);
   section.appendChild(head);
 
-  const body = el("div", "era-body");
-  era.projects.forEach((p) => body.appendChild(projectNode(p)));
+  const columns = era.layout === "columns";
+  const body = el("div", columns ? "age-cols" : "era-body");
+  era.projects.forEach((p) => body.appendChild(projectNode(p, columns)));
   section.appendChild(body);
   return section;
 }
@@ -274,4 +286,13 @@ if (heroCue) {
     const first = document.querySelector(".era");
     if (first) first.scrollIntoView({ behavior: "smooth", block: "start" });
   });
+}
+
+// contact: address is assembled in the browser so it never sits in the page
+// source as plain text (keeps it out of reach of email-scraping bots)
+const contactLink = document.getElementById("contactLink");
+if (contactLink) {
+  const user = ["jonah", "kais"].join("");
+  const domain = ["gmail", "com"].join(".");
+  contactLink.href = "mailto:" + user + "@" + domain;
 }
