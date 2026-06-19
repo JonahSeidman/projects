@@ -11,13 +11,13 @@ const ERAS = [
       {
         age: "12",
         title: "LED Array",
-        desc: "My first real build. An LED array rigged as the grand finale of a Rube Goldberg machine — the last step in the chain reaction was what switched it on. More about nailing the payoff than the circuit itself, but it's the project that got me hooked on making things.",
+        desc: "LED array wired to switch on at the end of a Rube Goldberg machine's chain reaction.",
         media: [{ type: "video", src: "images/led.mp4" }],
       },
       {
         age: "13",
         title: "RFID Door Lock",
-        desc: "A door lock you open by tapping an RFID tag. The reader checks a scanned card against the ones it's allowed to recognize, and an authorized tag releases the lock while anything unknown keeps it shut. This was where I first wired a reader, a controller, and a physical actuator into one working system.",
+        desc: "RFID lock. A reader scans a tag, checks it against an allowlist, and actuates the lock for authorized tags.",
         media: [
           { type: "image", src: "images/rfid-1.png" },
           { type: "image", src: "images/rfid-2.png" },
@@ -33,7 +33,7 @@ const ERAS = [
     projects: [
       {
         title: "",
-        desc: "The project I pour the most time into. A sailboat built to handle itself — steering and sail control run by the boat's own electronics instead of someone at the helm. It's an ongoing build, equal parts mechanical, electrical, and software.",
+        desc: "Sailboat with autonomous steering and sail control driven by onboard electronics. Ongoing build.",
         media: [
           { type: "image", src: "images/boat-1.png" },
           { type: "image", src: "images/boat-2.jpg" },
@@ -46,7 +46,7 @@ const ERAS = [
       },
       {
         title: "Battery Management System",
-        desc: "Protection and monitoring for the boat's battery pack: overcurrent and undervoltage cutoffs, per-cell voltage monitoring, and current sensing — all reported up to a Raspberry Pi so the pack can be watched and logged in real time.",
+        desc: "Overcurrent and undervoltage protection, per-cell voltage monitoring, and current sensing, with telemetry sent to a Raspberry Pi.",
         media: [
           { type: "image", src: "images/bms-1.jpg" },
           { type: "image", src: "images/bms-2.jpg" },
@@ -66,7 +66,7 @@ const ERAS = [
     projects: [
       {
         title: "Homemade Drone",
-        desc: "A quadcopter I built from the frame up — not an FPV rig, just flown line-of-sight. Choosing the parts, wiring the electronics, and tuning it until it actually flew well was the whole point.",
+        desc: "Scratch-built quadcopter — frame, motors, and flight controller. Flown line-of-sight, not FPV.",
         media: [
           { type: "image", src: "images/drone-1.png" },
           { type: "image", src: "images/drone-2.jpg" },
@@ -83,7 +83,7 @@ const ERAS = [
     projects: [
       {
         title: "",
-        desc: "A small accessory that plugs into a car's OBD-II port and streams the vehicle's data over Bluetooth — live readings pulled straight from the car's computer onto a phone.",
+        desc: "Plugs into a car's OBD-II port and streams live vehicle data over Bluetooth to a phone.",
         media: [{ type: "image", src: "images/obd2.png" }],
       },
     ],
@@ -96,7 +96,7 @@ const ERAS = [
     projects: [
       {
         title: "Meteor-M2",
-        desc: "Imagery pulled from the Meteor-M polar-orbiting weather satellites as they passed overhead — received on a dish in my backyard and decoded into pictures, rather than downloaded from the internet.",
+        desc: "Imagery from Meteor-M polar-orbiting weather satellites, received with a backyard dish and decoded locally.",
         media: [
           { type: "image", src: "images/asr-1.png" },
           { type: "image", src: "images/asr-2.png" },
@@ -105,7 +105,7 @@ const ERAS = [
       },
       {
         title: "GOES Imagery",
-        desc: "Weather imagery from the GOES geostationary satellites, captured the same way — my own backyard ground station receiving the downlink and turning it into images.",
+        desc: "Imagery from GOES geostationary weather satellites, received and decoded with a backyard ground station.",
         media: [
           { type: "image", src: "images/goes-1.png" },
           { type: "image", src: "images/goes-2.png" },

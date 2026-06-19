@@ -37,7 +37,15 @@
 
     master = ctx.createGain();
     master.gain.value = 0;
-    master.connect(ctx.destination);
+    // gentle limiter so the louder mix stays clean
+    const comp = ctx.createDynamicsCompressor();
+    comp.threshold.value = -16;
+    comp.knee.value = 24;
+    comp.ratio.value = 4;
+    comp.attack.value = 0.005;
+    comp.release.value = 0.25;
+    master.connect(comp);
+    comp.connect(ctx.destination);
 
     // shared spacious feedback delay (poor-man's reverb)
     const delay = ctx.createDelay(1.0);
@@ -100,13 +108,13 @@
   function scheduleBar(idx, t) {
     const c = idx % 4;
     // chord — gently rolled
-    CHORDS[c].forEach((m, i) => rhodes(t + i * 0.02, m2f(m), barLen * 0.92, 0.085));
+    CHORDS[c].forEach((m, i) => rhodes(t + i * 0.02, m2f(m), barLen * 0.92, 0.12));
     // walking bass on each beat
-    BASS[c].forEach((m, i) => bass(t + i * beat, m2f(m), 0.16));
+    BASS[c].forEach((m, i) => bass(t + i * beat, m2f(m), 0.24));
     // swung hats
     for (let b = 0; b < 4; b++) {
-      hat(t + b * beat, 0.05);
-      hat(t + (b + SWING) * beat, 0.03);
+      hat(t + b * beat, 0.06);
+      hat(t + (b + SWING) * beat, 0.04);
     }
   }
 
@@ -120,7 +128,7 @@
 
   function applyVol() {
     if (!master) return;
-    const v = muted ? 0 : targetVol * 0.45;
+    const v = muted ? 0 : targetVol * 0.95;
     master.gain.cancelScheduledValues(ctx.currentTime);
     master.gain.setTargetAtTime(v, ctx.currentTime, 0.2);
   }
