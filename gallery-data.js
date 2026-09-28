@@ -4,32 +4,202 @@ window.GALLERY_DATA = {
   "subtitle": "A collection of some things I've built.",
   "items": [
     {
-      "src": "images/1.png",
+      "src": "images/asr-1.png",
       "title": "",
       "description": ""
     },
     {
-      "src": "images/2.png",
+      "src": "images/asr-2.png",
       "title": "",
       "description": ""
     },
     {
-      "src": "images/3.png",
+      "src": "images/bms-1.jpg",
       "title": "",
       "description": ""
     },
     {
-      "src": "images/4.png",
+      "src": "images/bms-2.jpg",
       "title": "",
       "description": ""
     },
     {
-      "src": "images/5.png",
+      "src": "images/boat-1.png",
       "title": "",
       "description": ""
     },
     {
-      "src": "images/6.png",
+      "src": "images/boat-2.jpg",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/boat-3.jpg",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/boat-4.png",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/boat-5.png",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/boat-6.png",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/boat-7.png",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/drone-1.png",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/drone-2.jpg",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/drone-3.jpg",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/goes-1.png",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/goes-2.png",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/goes-3.png",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/meteor.png",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/muon-count-rates.png",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/muon-detector-setup.jpeg",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/muon-pulse-data.png",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/northwestern-engineering-logo.png",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/obd2.png",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/rfid-1.png",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/rfid-2.png",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/rogers-lab-0594-poster.jpg",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/rogers-lab-0607-poster.jpg",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/rogers-lab-0609-poster.jpg",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/rogers-lab-0616-poster.jpg",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/rogers-lab-bench-testing.jpg",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/rogers-lab-device-assembly.jpg",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/rogers-lab-device-under-microscope.jpg",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/rogers-lab-microscope-station.jpg",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/rogers-lab-neobee-schematic.png",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/rogers-lab-neobloom-schematic.png",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/rogers-lab-neoflux-schematic.png",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/rogers-lab-pcb-layout-1.png",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/rogers-lab-pcb-layout-2.png",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/rogers-lab-pcb-layout-3.png",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/rogers-lab-prototype-pair.jpg",
       "title": "",
       "description": ""
     }

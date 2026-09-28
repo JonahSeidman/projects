@@ -57,6 +57,26 @@ const ERAS = [
           },
           {
             type: "image",
+            src: "images/rogers-lab-prototype-pair.jpg",
+            caption: "Two compact wireless prototypes with batteries",
+          },
+          {
+            type: "image",
+            src: "images/rogers-lab-bench-testing.jpg",
+            caption: "Electrical characterization and bench testing",
+          },
+          {
+            type: "image",
+            src: "images/rogers-lab-microscope-station.jpg",
+            caption: "Microscope-assisted device inspection",
+          },
+          {
+            type: "image",
+            src: "images/rogers-lab-device-under-microscope.jpg",
+            caption: "Device positioned for microscope inspection",
+          },
+          {
+            type: "image",
             src: "images/rogers-lab-pcb-layout-1.png",
             caption: "Flexible PCB layout with remote sensor head",
           },
@@ -268,13 +288,21 @@ function mediaNode(item) {
     v.src = item.src;
     v.muted = true;
     v.loop = true;
-    v.autoplay = true;
+    v.autoplay = false;
     v.playsInline = true;
     v.setAttribute("playsinline", "");
     v.setAttribute("muted", "");
     v.setAttribute("preload", "metadata");
     if (item.poster) v.poster = item.poster;
-    v.controls = false;
+    const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    v.controls = !canHover;
+    if (canHover) {
+      const play = () => v.play().catch(() => {});
+      wrap.addEventListener("mouseenter", play);
+      wrap.addEventListener("mouseleave", () => v.pause());
+      wrap.addEventListener("focusin", play);
+      wrap.addEventListener("focusout", () => v.pause());
+    }
     wrap.appendChild(v);
     if (item.caption) wrap.appendChild(el("figcaption", "media-cap", item.caption));
     return wrap;
