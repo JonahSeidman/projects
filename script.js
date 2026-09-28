@@ -1,4 +1,4 @@
-/* Jonah Seidman — projects progression. Data-driven render + lightbox + scrollspy. */
+/* Jonah Seidman projects progression. Data-driven render + lightbox + scrollspy. */
 
 const ERAS = [
   {
@@ -48,7 +48,7 @@ const ERAS = [
     projects: [
       {
         title: "Wireless Neonatal Health Monitoring",
-        desc: "At Northwestern University's John A. Rogers Lab, I worked on the design and manufacturing of compact, wireless health-monitoring devices for neonates, including ECG sensors and wound-monitoring bandages. The goal was to make clinical monitoring smaller, wireless, and longer-lasting—reducing the bulky wired equipment that can limit access for clinicians and comfort for infants.",
+        desc: "At Northwestern University's John A. Rogers Lab, I worked on the design and manufacturing of compact, wireless health-monitoring devices for neonates, including ECG sensors and wound-monitoring bandages. The goal was to make clinical monitoring smaller, wireless, and longer-lasting, reducing the bulky wired equipment that can limit access for clinicians and comfort for infants.",
         media: [
           {
             type: "image",
@@ -202,7 +202,7 @@ const ERAS = [
     projects: [
       {
         title: "Homemade Drone",
-        desc: "Scratch-built quadcopter — frame, motors, and flight controller. Flown line-of-sight, not FPV.",
+        desc: "Scratch-built quadcopter with a custom frame, motors, and flight controller. Flown line-of-sight, not FPV.",
         media: [
           { type: "image", src: "images/drone-1.png" },
           { type: "image", src: "images/drone-2.jpg" },
@@ -267,7 +267,7 @@ function mediaNode(item) {
     link.href = item.src;
     link.target = "_blank";
     link.rel = "noopener";
-    link.setAttribute("aria-label", (item.label || "Document") + " — open PDF");
+    link.setAttribute("aria-label", (item.label || "Document") + ": open PDF");
 
     const img = document.createElement("img");
     img.src = item.poster;

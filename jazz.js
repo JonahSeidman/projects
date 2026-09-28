@@ -1,4 +1,4 @@
-/* Procedural lo-fi jazz — soft Rhodes (I–vi–ii–V), walking bass, swung hats.
+/* Procedural lo-fi jazz: soft Rhodes (I–vi–ii–V), walking bass, swung hats.
    No external audio files. Starts on first user gesture (browsers block
    silent autostart). Volume slider lives top-right and hides on scroll. */
 
@@ -10,7 +10,7 @@
   const barLen = beat * 4;
   const SWING = 0.64;           // off-beat placement (0.5 = straight)
 
-  // I vi ii V in C — maj7 / m7 / m7 / dom7 voicings (MIDI)
+  // I vi ii V in C: maj7 / m7 / m7 / dom7 voicings (MIDI)
   const CHORDS = [
     [60, 64, 67, 71], // Cmaj7
     [57, 60, 64, 67], // Am7
@@ -107,7 +107,7 @@
 
   function scheduleBar(idx, t) {
     const c = idx % 4;
-    // chord — gently rolled
+    // chord, gently rolled
     CHORDS[c].forEach((m, i) => rhodes(t + i * 0.02, m2f(m), barLen * 0.92, 0.12));
     // walking bass on each beat
     BASS[c].forEach((m, i) => bass(t + i * beat, m2f(m), 0.24));
