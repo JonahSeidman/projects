@@ -3,7 +3,7 @@
 const ERAS = [
   {
     id: "boat",
-    num: "01",
+    num: "02",
     name: "Autonomous Sailboat",
     age: "14–present",
     projects: [
@@ -36,7 +36,8 @@ const ERAS = [
   },
   {
     id: "rogers-lab",
-    num: "02",
+    num: "01",
+    featured: true,
     name: "John A. Rogers Lab Internship",
     age: "17 · Summer 2026",
     badge: {
@@ -51,13 +52,23 @@ const ERAS = [
         media: [
           {
             type: "image",
-            src: "images/rogers-lab-flex-circuit.jpg",
-            caption: "Flexible wireless sensing circuit",
+            src: "images/rogers-lab-device-assembly.jpg",
+            caption: "Device assembly under inspection",
           },
           {
             type: "image",
-            src: "images/rogers-lab-device-assembly.jpg",
-            caption: "Device assembly under inspection",
+            src: "images/rogers-lab-pcb-layout-1.png",
+            caption: "Flexible PCB layout with remote sensor head",
+          },
+          {
+            type: "image",
+            src: "images/rogers-lab-pcb-layout-2.png",
+            caption: "Multi-electrode wearable PCB layout",
+          },
+          {
+            type: "image",
+            src: "images/rogers-lab-pcb-layout-3.png",
+            caption: "Compact flexible PCB layout",
           },
           {
             type: "video",
@@ -73,12 +84,6 @@ const ERAS = [
           },
           {
             type: "video",
-            src: "images/rogers-lab-0608.mp4",
-            poster: "images/rogers-lab-0608-poster.jpg",
-            caption: "Benchtop microscopy",
-          },
-          {
-            type: "video",
             src: "images/rogers-lab-0609.mp4",
             poster: "images/rogers-lab-0609-poster.jpg",
             caption: "Device fabrication process",
@@ -88,6 +93,27 @@ const ERAS = [
             src: "images/rogers-lab-0616.mp4",
             poster: "images/rogers-lab-0616-poster.jpg",
             caption: "Powered device check",
+          },
+          {
+            type: "document",
+            src: "documents/rogers-lab/neoflux-v12.pdf",
+            poster: "images/rogers-lab-neoflux-schematic.png",
+            label: "NeoFlux v12",
+            caption: "Open PDF schematic",
+          },
+          {
+            type: "document",
+            src: "documents/rogers-lab/neobloom-v1.pdf",
+            poster: "images/rogers-lab-neobloom-schematic.png",
+            label: "NeoBloom v1",
+            caption: "Open PDF schematic",
+          },
+          {
+            type: "document",
+            src: "documents/rogers-lab/neobee-v21.pdf",
+            poster: "images/rogers-lab-neobee-schematic.png",
+            label: "NeoBee v21",
+            caption: "Open PDF schematic",
           },
         ],
       },
@@ -216,6 +242,26 @@ function el(tag, cls, html) {
 }
 
 function mediaNode(item) {
+  if (item.type === "document") {
+    const link = el("a", "media media-document");
+    link.href = item.src;
+    link.target = "_blank";
+    link.rel = "noopener";
+    link.setAttribute("aria-label", (item.label || "Document") + " — open PDF");
+
+    const img = document.createElement("img");
+    img.src = item.poster;
+    img.alt = item.label ? item.label + " schematic preview" : "PDF preview";
+    img.loading = "lazy";
+    img.decoding = "async";
+    link.appendChild(img);
+
+    const cap = el("div", "media-cap media-doc-cap");
+    cap.appendChild(el("span", "media-doc-title", item.label || "PDF"));
+    cap.appendChild(el("span", "media-doc-action", item.caption || "Open PDF"));
+    link.appendChild(cap);
+    return link;
+  }
   if (item.type === "video") {
     const wrap = el("figure", "media media-video");
     const v = document.createElement("video");
@@ -315,7 +361,11 @@ function eraNode(era) {
 
 function render() {
   const timeline = document.getElementById("timeline");
-  ERAS.forEach((era) => timeline.appendChild(eraNode(era)));
+  const orderedEras = [
+    ...ERAS.filter((era) => era.featured),
+    ...ERAS.filter((era) => !era.featured),
+  ];
+  orderedEras.forEach((era) => timeline.appendChild(eraNode(era)));
 }
 
 /* ---------- lightbox ---------- */
