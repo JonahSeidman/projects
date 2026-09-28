@@ -35,8 +35,67 @@ const ERAS = [
     ],
   },
   {
-    id: "muon-detector",
+    id: "rogers-lab",
     num: "02",
+    name: "John A. Rogers Lab Internship",
+    age: "17 · Summer 2026",
+    badge: {
+      src: "images/northwestern-engineering-logo.png",
+      alt: "Northwestern Engineering",
+      label: "Internship",
+    },
+    projects: [
+      {
+        title: "Wireless Neonatal Health Monitoring",
+        desc: "At Northwestern University's John A. Rogers Lab, I worked on the design and manufacturing of compact, wireless health-monitoring devices for neonates, including ECG sensors and wound-monitoring bandages. The goal was to make clinical monitoring smaller, wireless, and longer-lasting—reducing the bulky wired equipment that can limit access for clinicians and comfort for infants.",
+        media: [
+          {
+            type: "image",
+            src: "images/rogers-lab-flex-circuit.jpg",
+            caption: "Flexible wireless sensing circuit",
+          },
+          {
+            type: "image",
+            src: "images/rogers-lab-device-assembly.jpg",
+            caption: "Device assembly under inspection",
+          },
+          {
+            type: "video",
+            src: "images/rogers-lab-0594.mp4",
+            poster: "images/rogers-lab-0594-poster.jpg",
+            caption: "Microscope inspection of flexible traces",
+          },
+          {
+            type: "video",
+            src: "images/rogers-lab-0607.mp4",
+            poster: "images/rogers-lab-0607-poster.jpg",
+            caption: "Microscope alignment during assembly",
+          },
+          {
+            type: "video",
+            src: "images/rogers-lab-0608.mp4",
+            poster: "images/rogers-lab-0608-poster.jpg",
+            caption: "Benchtop microscopy",
+          },
+          {
+            type: "video",
+            src: "images/rogers-lab-0609.mp4",
+            poster: "images/rogers-lab-0609-poster.jpg",
+            caption: "Device fabrication process",
+          },
+          {
+            type: "video",
+            src: "images/rogers-lab-0616.mp4",
+            poster: "images/rogers-lab-0616-poster.jpg",
+            caption: "Powered device check",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "muon-detector",
+    num: "03",
     name: "Cosmic-Ray Muon Detector",
     age: "17–present",
     projects: [
@@ -65,7 +124,7 @@ const ERAS = [
   },
   {
     id: "satellites",
-    num: "03",
+    num: "04",
     name: "Satellites",
     age: "16–present",
     projects: [
@@ -91,7 +150,7 @@ const ERAS = [
   },
   {
     id: "personal",
-    num: "04",
+    num: "05",
     name: "Personal Projects",
     age: "15",
     projects: [
@@ -108,7 +167,7 @@ const ERAS = [
   },
   {
     id: "obd2",
-    num: "05",
+    num: "06",
     name: "OBD-II Bluetooth Accessory",
     age: "14",
     projects: [
@@ -121,7 +180,7 @@ const ERAS = [
   },
   {
     id: "eighth-grade",
-    num: "06",
+    num: "07",
     name: "",
     age: "12–13",
     layout: "columns",
@@ -168,6 +227,7 @@ function mediaNode(item) {
     v.setAttribute("playsinline", "");
     v.setAttribute("muted", "");
     v.setAttribute("preload", "metadata");
+    if (item.poster) v.poster = item.poster;
     v.controls = false;
     wrap.appendChild(v);
     if (item.caption) wrap.appendChild(el("figcaption", "media-cap", item.caption));
@@ -176,7 +236,7 @@ function mediaNode(item) {
   const wrap = el("figure", "media media-image");
   const img = document.createElement("img");
   img.src = item.src;
-  img.alt = "";
+  img.alt = item.alt || item.caption || "";
   img.loading = "lazy";
   img.decoding = "async";
   const idx = lightboxImages.length;
@@ -229,6 +289,15 @@ function eraNode(era) {
   const head = el("div", "era-head");
   head.appendChild(el("span", "era-dot"));
   const meta = el("div", "era-meta");
+  if (era.badge) {
+    const badge = el("div", "era-badge");
+    const badgeImg = document.createElement("img");
+    badgeImg.src = era.badge.src;
+    badgeImg.alt = era.badge.alt || "";
+    badge.appendChild(badgeImg);
+    if (era.badge.label) badge.appendChild(el("span", "era-badge-label", era.badge.label));
+    meta.appendChild(badge);
+  }
   const numLine = el("span", "era-num", era.num);
   if (era.age) numLine.appendChild(el("span", "era-age", "Age " + era.age));
   meta.appendChild(numLine);
