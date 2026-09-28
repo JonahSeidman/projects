@@ -2,32 +2,8 @@
 
 const ERAS = [
   {
-    id: "eighth-grade",
-    num: "01",
-    name: "",
-    age: "12–13",
-    layout: "columns",
-    projects: [
-      {
-        age: "12",
-        title: "LED Array",
-        desc: "LED array wired to switch on at the end of a Rube Goldberg machine's chain reaction.",
-        media: [{ type: "video", src: "images/led.mp4" }],
-      },
-      {
-        age: "13",
-        title: "RFID Door Lock",
-        desc: "RFID lock. A reader scans a tag, checks it against an allowlist, and actuates the lock for authorized tags.",
-        media: [
-          { type: "image", src: "images/rfid-1.png" },
-          { type: "image", src: "images/rfid-2.png" },
-        ],
-      },
-    ],
-  },
-  {
     id: "boat",
-    num: "02",
+    num: "01",
     name: "Autonomous Sailboat",
     age: "14–present",
     projects: [
@@ -59,38 +35,37 @@ const ERAS = [
     ],
   },
   {
-    id: "personal",
-    num: "03",
-    name: "Personal Projects",
-    age: "15",
+    id: "muon-detector",
+    num: "02",
+    name: "Cosmic-Ray Muon Detector",
+    age: "17–present",
     projects: [
       {
-        title: "Homemade Drone",
-        desc: "Scratch-built quadcopter — frame, motors, and flight controller. Flown line-of-sight, not FPV.",
+        title: "Coincidence Detector",
+        desc: "Two scintillation detectors are stacked and monitored together. When both register a pulse within the same coincidence window, the event is counted as a candidate cosmic-ray muon, rejecting many single-detector background hits.",
         media: [
-          { type: "image", src: "images/drone-1.png" },
-          { type: "image", src: "images/drone-2.jpg" },
-          { type: "image", src: "images/drone-3.jpg" },
+          {
+            type: "image",
+            src: "images/muon-detector-setup.jpeg",
+            caption: "Two-detector coincidence setup",
+          },
+          {
+            type: "image",
+            src: "images/muon-count-rates.png",
+            caption: "Coincidence count rate by detector orientation",
+          },
+          {
+            type: "image",
+            src: "images/muon-pulse-data.png",
+            caption: "Recorded detector pulse data",
+          },
         ],
       },
     ],
   },
   {
-    id: "obd2",
-    num: "04",
-    name: "OBD-II Bluetooth Accessory",
-    age: "14",
-    projects: [
-      {
-        title: "",
-        desc: "Plugs into a car's OBD-II port and streams live vehicle data over Bluetooth to a phone.",
-        media: [{ type: "image", src: "images/obd2.png" }],
-      },
-    ],
-  },
-  {
     id: "satellites",
-    num: "05",
+    num: "03",
     name: "Satellites",
     age: "16–present",
     projects: [
@@ -115,30 +90,55 @@ const ERAS = [
     ],
   },
   {
-    id: "muon-detector",
-    num: "06",
-    name: "Cosmic-Ray Muon Detector",
-    age: "17–present",
+    id: "personal",
+    num: "04",
+    name: "Personal Projects",
+    age: "15",
     projects: [
       {
-        title: "Coincidence Detector",
-        desc: "Two scintillation detectors are stacked and monitored together. When both register a pulse within the same coincidence window, the event is counted as a candidate cosmic-ray muon, rejecting many single-detector background hits.",
+        title: "Homemade Drone",
+        desc: "Scratch-built quadcopter — frame, motors, and flight controller. Flown line-of-sight, not FPV.",
         media: [
-          {
-            type: "image",
-            src: "images/muon-detector-setup.jpeg",
-            caption: "Two-detector coincidence setup",
-          },
-          {
-            type: "image",
-            src: "images/muon-count-rates.png",
-            caption: "Coincidence count rate by detector orientation",
-          },
-          {
-            type: "image",
-            src: "images/muon-pulse-data.png",
-            caption: "Recorded detector pulse data",
-          },
+          { type: "image", src: "images/drone-1.png" },
+          { type: "image", src: "images/drone-2.jpg" },
+          { type: "image", src: "images/drone-3.jpg" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "obd2",
+    num: "05",
+    name: "OBD-II Bluetooth Accessory",
+    age: "14",
+    projects: [
+      {
+        title: "",
+        desc: "Plugs into a car's OBD-II port and streams live vehicle data over Bluetooth to a phone.",
+        media: [{ type: "image", src: "images/obd2.png" }],
+      },
+    ],
+  },
+  {
+    id: "eighth-grade",
+    num: "06",
+    name: "",
+    age: "12–13",
+    layout: "columns",
+    projects: [
+      {
+        age: "12",
+        title: "LED Array",
+        desc: "LED array wired to switch on at the end of a Rube Goldberg machine's chain reaction.",
+        media: [{ type: "video", src: "images/led.mp4" }],
+      },
+      {
+        age: "13",
+        title: "RFID Door Lock",
+        desc: "RFID lock. A reader scans a tag, checks it against an allowlist, and actuates the lock for authorized tags.",
+        media: [
+          { type: "image", src: "images/rfid-1.png" },
+          { type: "image", src: "images/rfid-2.png" },
         ],
       },
     ],
