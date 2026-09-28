@@ -174,8 +174,13 @@ a { color: inherit; text-decoration: none; }
 .era.in { opacity: 1; transform: none; }
 
 .era-head { position: relative; margin-bottom: 1.4rem; }
+.era-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 .era-badge {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 0.65rem;
   width: fit-content;
