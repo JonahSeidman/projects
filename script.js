@@ -114,6 +114,34 @@ const ERAS = [
       },
     ],
   },
+  {
+    id: "muon-detector",
+    num: "06",
+    name: "Cosmic-Ray Muon Detector",
+    projects: [
+      {
+        title: "Coincidence Detector",
+        desc: "Two scintillation detectors are stacked and monitored together. When both register a pulse within the same coincidence window, the event is counted as a candidate cosmic-ray muon, rejecting many single-detector background hits.",
+        media: [
+          {
+            type: "image",
+            src: "images/muon-detector-setup.jpeg",
+            caption: "Two-detector coincidence setup",
+          },
+          {
+            type: "image",
+            src: "images/muon-count-rates.png",
+            caption: "Coincidence count rate by detector orientation",
+          },
+          {
+            type: "image",
+            src: "images/muon-pulse-data.png",
+            caption: "Recorded detector pulse data",
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 /* ---------- render ---------- */
