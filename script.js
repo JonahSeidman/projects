@@ -30,7 +30,7 @@ const ERAS = [
       },
       {
         title: "",
-        media: [{ type: "video", src: "images/boat.mp4" }],
+        media: [{ type: "video", src: "images/boat.mp4", poster: "images/boat-poster.jpg" }],
       },
     ],
   },
@@ -235,7 +235,7 @@ const ERAS = [
         age: "12",
         title: "LED Array",
         desc: "LED array wired to switch on at the end of a Rube Goldberg machine's chain reaction.",
-        media: [{ type: "video", src: "images/led.mp4" }],
+        media: [{ type: "video", src: "images/led.mp4", poster: "images/led-poster.jpg" }],
       },
       {
         age: "13",
@@ -304,6 +304,13 @@ function mediaNode(item) {
       wrap.addEventListener("focusout", () => v.pause());
     }
     wrap.appendChild(v);
+    const hint = el(
+      "span",
+      "media-video-hint",
+      canHover ? "▶ Hover over video to play" : "▶ Tap video controls to play"
+    );
+    hint.setAttribute("aria-hidden", "true");
+    wrap.appendChild(hint);
     if (item.caption) wrap.appendChild(el("figcaption", "media-cap", item.caption));
     return wrap;
   }

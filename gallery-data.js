@@ -59,6 +59,11 @@ window.GALLERY_DATA = {
       "description": ""
     },
     {
+      "src": "images/boat-poster.jpg",
+      "title": "",
+      "description": ""
+    },
+    {
       "src": "images/drone-1.png",
       "title": "",
       "description": ""
@@ -85,6 +90,11 @@ window.GALLERY_DATA = {
     },
     {
       "src": "images/goes-3.png",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/led-poster.jpg",
       "title": "",
       "description": ""
     },

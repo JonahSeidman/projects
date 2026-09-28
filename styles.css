@@ -375,6 +375,30 @@ a { color: inherit; text-decoration: none; }
   width: 100%;
   height: auto;
 }
+.media-video { position: relative; }
+.media-video-hint {
+  position: absolute;
+  z-index: 1;
+  top: 0.7rem;
+  left: 0.7rem;
+  max-width: calc(100% - 1.4rem);
+  padding: 0.42rem 0.62rem;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  background: rgba(7, 7, 7, 0.78);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .media-video:hover .media-video-hint,
+  .media-video:focus-within .media-video-hint { opacity: 0; }
+}
 .media-cap {
   padding: 0.45rem 0.7rem;
   font-size: 0.74rem;
