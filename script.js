@@ -38,7 +38,7 @@ const ERAS = [
     id: "rogers-lab",
     num: "01",
     featured: true,
-    name: "John A. Rogers Lab Internship",
+    name: "Professor John A. Rogers Lab Internship",
     age: "17 · Summer 2026",
     badge: {
       src: "images/northwestern-engineering-logo.png",
@@ -48,7 +48,7 @@ const ERAS = [
     projects: [
       {
         title: "Wireless Neonatal Health Monitoring",
-        desc: "At Northwestern University's John A. Rogers Lab, I worked on the design and manufacturing of compact, wireless health-monitoring devices for neonates, including ECG sensors and wound-monitoring bandages. The goal was to make clinical monitoring smaller, wireless, and longer-lasting, reducing the bulky wired equipment that can limit access for clinicians and comfort for infants.",
+        desc: "At Northwestern University, I worked in Professor John A. Rogers' lab on the design and manufacturing of compact, wireless health-monitoring devices for neonates, including ECG sensors and wound-monitoring bandages. The goal was to make clinical monitoring smaller, wireless, and longer-lasting, reducing the bulky wired equipment that can limit access for clinicians and comfort for infants.",
         media: [
           {
             type: "image",
