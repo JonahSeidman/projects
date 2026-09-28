@@ -118,6 +118,7 @@ const ERAS = [
     id: "muon-detector",
     num: "06",
     name: "Cosmic-Ray Muon Detector",
+    age: "17–present",
     projects: [
       {
         title: "Coincidence Detector",
