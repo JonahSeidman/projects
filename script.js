@@ -76,6 +76,12 @@ const ERAS = [
             caption: "Device positioned for microscope inspection",
           },
           {
+            type: "video",
+            src: "images/rogers-lab-0594.mp4",
+            poster: "images/rogers-lab-0594-poster.jpg",
+            caption: "Microscope inspection of flexible traces",
+          },
+          {
             type: "image",
             src: "images/rogers-lab-pcb-layout-1.png",
             caption: "Flexible PCB layout with remote sensor head",
@@ -89,12 +95,6 @@ const ERAS = [
             type: "image",
             src: "images/rogers-lab-pcb-layout-3.png",
             caption: "Compact flexible PCB layout",
-          },
-          {
-            type: "video",
-            src: "images/rogers-lab-0594.mp4",
-            poster: "images/rogers-lab-0594-poster.jpg",
-            caption: "Microscope inspection of flexible traces",
           },
           {
             type: "video",
