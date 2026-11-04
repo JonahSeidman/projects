@@ -5,6 +5,7 @@
   "description": "A zero-config photo portfolio for my projects.",
   "scripts": {
     "build": "node build.js",
+    "optimize": "node optimize-media.js",
     "start": "node build.js && node serve.js",
     "serve": "node serve.js"
   }

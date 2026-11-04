@@ -244,7 +244,7 @@ const ERAS = [
     id: "hivemapper",
     num: "07",
     name: "Hivemapper Hardware Engineering Technician",
-    age: "14–15 · Winter 2023–Fall 2024",
+    age: "14 · Winter 2023–Fall 2024",
     projects: [
       {
         title: "Refurbishment Lead",
@@ -324,7 +324,117 @@ function el(tag, cls, html) {
   return n;
 }
 
-function mediaNode(item) {
+/* ---------- media loading ----------
+   Images are fetched in page order, top to bottom, a few at a time, so the
+   first sections fill in first. Anything the visitor scrolls near jumps the
+   queue. Sizes come from media-manifest.js (made by optimize-media.js); a file
+   missing from it falls back to the original. Videos wait until every image
+   is in. */
+
+const MEDIA = window.MEDIA || {};
+const SIZES_GRID = "(max-width: 820px) 100vw, (max-width: 1150px) 50vw, (max-width: 1450px) 33vw, 460px";
+const SIZES_SINGLE = "(max-width: 900px) 100vw, 820px";
+const MAX_ACTIVE = 4;
+const loadQueue = [];
+const jobByEl = new Map();
+let activeLoads = 0;
+let videosReleased = false;
+
+function variantSrc(src) {
+  const m = MEDIA[src];
+  return m && m.v ? m.v[m.v.length - 1][0] : src;
+}
+
+function lightboxSrc(src) {
+  const m = MEDIA[src];
+  return m && m.xl ? m.xl : variantSrc(src);
+}
+
+// reserve the image's box before it loads so the page doesn't jump
+function setBox(node, src) {
+  const m = MEDIA[src];
+  if (m && m.w) {
+    node.width = m.w;
+    node.height = m.h;
+  }
+}
+
+function queueImage(img, src, sizes) {
+  setBox(img, src);
+  const job = {
+    el: img,
+    start(done) {
+      img.addEventListener("load", () => { img.classList.add("ready"); done(); }, { once: true });
+      img.addEventListener("error", () => { img.classList.add("ready"); done(); }, { once: true });
+      const m = MEDIA[src];
+      if (m && m.v) {
+        img.sizes = sizes;
+        img.srcset = m.v.map(([u, w]) => u + " " + w + "w").join(", ");
+      }
+      img.src = variantSrc(src);
+    },
+  };
+  loadQueue.push(job);
+  jobByEl.set(img, job);
+}
+
+function queuePoster(video, src, sizes) {
+  setBox(video, src);
+  const m = MEDIA[src];
+  const url = m && m.v ? m.v[sizes === SIZES_SINGLE ? m.v.length - 1 : 0][0] : src;
+  const job = {
+    el: video,
+    start(done) {
+      const probe = new Image();
+      probe.onload = probe.onerror = () => { video.poster = url; done(); };
+      probe.src = url;
+    },
+  };
+  loadQueue.push(job);
+  jobByEl.set(video, job);
+}
+
+function runJob(job, urgent) {
+  if (job.started) return;
+  job.started = true;
+  activeLoads++;
+  if (urgent && job.el.tagName === "IMG") job.el.fetchPriority = "high";
+  let finished = false;
+  job.start(() => {
+    if (finished) return;
+    finished = true;
+    activeLoads--;
+    pumpQueue();
+  });
+}
+
+function pumpQueue() {
+  while (activeLoads < MAX_ACTIVE && loadQueue.length) runJob(loadQueue.shift());
+  if (!activeLoads && !loadQueue.length && !videosReleased) {
+    videosReleased = true;
+    document.querySelectorAll("video").forEach((v) => (v.preload = "metadata"));
+  }
+}
+
+function startMediaLoading() {
+  if ("IntersectionObserver" in window) {
+    const near = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((en) => {
+          if (!en.isIntersecting) return;
+          near.unobserve(en.target);
+          const job = jobByEl.get(en.target);
+          if (job) runJob(job, true);
+        });
+      },
+      { rootMargin: "100% 0px" }
+    );
+    jobByEl.forEach((job, node) => near.observe(node));
+  }
+  pumpQueue();
+}
+
+function mediaNode(item, sizes) {
   if (item.type === "document") {
     const link = el("a", "media media-document");
     link.href = item.src;
@@ -333,10 +443,9 @@ function mediaNode(item) {
     link.setAttribute("aria-label", (item.label || "Document") + ": open PDF");
 
     const img = document.createElement("img");
-    img.src = item.poster;
     img.alt = item.label ? item.label + " schematic preview" : "PDF preview";
-    img.loading = "lazy";
     img.decoding = "async";
+    queueImage(img, item.poster, sizes);
     link.appendChild(img);
 
     const cap = el("div", "media-cap media-doc-cap");
@@ -348,15 +457,15 @@ function mediaNode(item) {
   if (item.type === "video") {
     const wrap = el("figure", "media media-video");
     const v = document.createElement("video");
-    v.src = item.src;
     v.muted = true;
     v.loop = true;
     v.autoplay = false;
     v.playsInline = true;
     v.setAttribute("playsinline", "");
     v.setAttribute("muted", "");
-    v.setAttribute("preload", "metadata");
-    if (item.poster) v.poster = item.poster;
+    v.setAttribute("preload", "none");
+    v.src = (MEDIA[item.src] && MEDIA[item.src].src) || item.src;
+    if (item.poster) queuePoster(v, item.poster, sizes);
     const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
     v.controls = !canHover;
     if (canHover) {
@@ -379,12 +488,11 @@ function mediaNode(item) {
   }
   const wrap = el("figure", "media media-image");
   const img = document.createElement("img");
-  img.src = item.src;
   img.alt = item.alt || item.caption || "";
-  img.loading = "lazy";
   img.decoding = "async";
+  queueImage(img, item.src, sizes);
   const idx = lightboxImages.length;
-  lightboxImages.push({ src: item.src });
+  lightboxImages.push({ src: lightboxSrc(item.src) });
   img.addEventListener("click", () => openLightbox(idx));
   wrap.appendChild(img);
   if (item.caption) wrap.appendChild(el("figcaption", "media-cap", item.caption));
@@ -398,7 +506,8 @@ function mediaGrid(media, columns) {
   if (columns) cls += " age-col-grid";
   else cls += (single ? " media-grid--single" : "") + (onlyVideo ? " media-grid--video" : "");
   const grid = el("div", cls);
-  media.forEach((m) => grid.appendChild(mediaNode(m)));
+  const sizes = single && !columns ? SIZES_SINGLE : SIZES_GRID;
+  media.forEach((m) => grid.appendChild(mediaNode(m, sizes)));
   return grid;
 }
 
@@ -521,6 +630,7 @@ function wireObservers() {
 /* ---------- init ---------- */
 
 render();
+startMediaLoading();
 wireObservers();
 document.getElementById("year").textContent = new Date().getFullYear();
 
