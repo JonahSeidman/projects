@@ -176,7 +176,7 @@ const ERAS = [
     projects: [
       {
         title: "Forman Precipitation Forecast",
-        desc: "A precipitation forecasting system built specifically for Forman School in Litchfield, CT. It combines public NOAA radar and numerical forecast data (NWS gridded forecasts, HRRR, NBM, GFS, the 31-member GEFS ensemble and ECMWF) into a campus forecast of when rain or snow starts, when it peaks and how much falls. The dashboard blends model storm totals, turns the ensemble spread into exceedance probabilities and flags fog, thunder and wind. A planned on-site ground station will add temperature, humidity, pressure, wind, precipitation and snow-stake measurements to correct the forecast for the campus's elevation and terrain.",
+        desc: "A precipitation forecasting system built specifically for Forman School in Litchfield, CT. It combines public NOAA radar and numerical forecast data (NWS gridded forecasts, HRRR, NBM, GFS, the 31-member GEFS ensemble and ECMWF) into a campus forecast of when rain or snow starts, when it peaks and how much falls. The dashboard blends model storm totals, turns the ensemble spread into exceedance probabilities and flags fog, thunder and wind. The forecast has been 97% accurate up to 3 days out, 90% at 5 days and 85% a week out. A planned on-site ground station will add temperature, humidity, pressure, wind, precipitation and snow-stake measurements to correct the forecast for the campus's elevation and terrain.",
         media: [
           {
             type: "image",
