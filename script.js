@@ -325,7 +325,7 @@ function el(tag, cls, html) {
 }
 
 /* ---------- media loading ----------
-   Images are fetched in page order, top to bottom, a few at a time, so the
+   Images are fetched in page order, top to bottom, six at a time, so the
    first sections fill in first. Anything the visitor scrolls near jumps the
    queue. Sizes come from media-manifest.js (made by optimize-media.js); a file
    missing from it falls back to the original. Videos wait until every image
@@ -334,7 +334,7 @@ function el(tag, cls, html) {
 const MEDIA = window.MEDIA || {};
 const SIZES_GRID = "(max-width: 820px) 100vw, (max-width: 1150px) 50vw, (max-width: 1450px) 33vw, 460px";
 const SIZES_SINGLE = "(max-width: 900px) 100vw, 820px";
-const MAX_ACTIVE = 4;
+const MAX_ACTIVE = 6;
 const loadQueue = [];
 const jobByEl = new Map();
 let activeLoads = 0;
@@ -610,28 +610,10 @@ document.addEventListener("keydown", (e) => {
   else if (e.key === "ArrowLeft") step(-1);
 });
 
-/* ---------- scroll reveal + nav state ---------- */
-
-function wireObservers() {
-  const reveal = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((en) => {
-        if (en.isIntersecting) {
-          en.target.classList.add("in");
-          reveal.unobserve(en.target);
-        }
-      });
-    },
-    { rootMargin: "0px 0px -10% 0px", threshold: 0.08 }
-  );
-  document.querySelectorAll(".era, .project").forEach((n) => reveal.observe(n));
-}
-
 /* ---------- init ---------- */
 
 render();
 startMediaLoading();
-wireObservers();
 document.getElementById("year").textContent = new Date().getFullYear();
 
 // hero scroll cue: smooth-scroll to first era without adding a #hash to the URL

@@ -167,11 +167,7 @@ a { color: inherit; text-decoration: none; }
 .era {
   position: relative;
   padding: 2.4rem 0 0.6rem clamp(1.5rem, 4.5vw, 3.2rem);
-  opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
 }
-.era.in { opacity: 1; transform: none; }
 
 .era-head { position: relative; margin-bottom: 1.4rem; }
 .era-meta {
@@ -253,12 +249,6 @@ a { color: inherit; text-decoration: none; }
 /* ---------- projects ---------- */
 
 .era-body { display: flex; flex-direction: column; gap: 1.5rem; }
-.project {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.55s var(--ease) 0.05s, transform 0.55s var(--ease) 0.05s;
-}
-.project.in { opacity: 1; transform: none; }
 .project-title {
   font-size: 1.05rem;
   font-weight: 600;
@@ -376,7 +366,7 @@ a { color: inherit; text-decoration: none; }
   height: auto;
 }
 /* images fade in as the top-down loader fills them (see script.js) */
-.media img { opacity: 0; transition: opacity 0.4s var(--ease); }
+.media img { opacity: 0; transition: opacity 0.25s var(--ease); }
 .media img.ready { opacity: 1; }
 .media-video { position: relative; }
 .media-video-hint {
@@ -505,7 +495,6 @@ a { color: inherit; text-decoration: none; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .era, .project { opacity: 1; transform: none; transition: none; }
   .hero-cue-arrow { animation: none; }
   .media img { transition: none; }
 }
