@@ -94,6 +94,26 @@ window.GALLERY_DATA = {
       "description": ""
     },
     {
+      "src": "images/hivemapper-compute-module.jpg",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/hivemapper-dashcam-board.jpg",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/hivemapper-refurb-batch.jpg",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/hivemapper-thermal-testing.jpg",
+      "title": "",
+      "description": ""
+    },
+    {
       "src": "images/led-poster.jpg",
       "title": "",
       "description": ""

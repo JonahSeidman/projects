@@ -241,8 +241,42 @@ const ERAS = [
     ],
   },
   {
-    id: "obd2",
+    id: "hivemapper",
     num: "07",
+    name: "Hivemapper Hardware Engineering Technician",
+    age: "14–15 · Winter 2023–Fall 2024",
+    projects: [
+      {
+        title: "Refurbishment Lead",
+        desc: "At Hivemapper, I led the returns refurbishment workflow for the company's mapping dashcams. I processed and evaluated more than 5,000 returned devices through diagnostics, repair triage and quality control, and repaired more than 1,000 of them through hardware troubleshooting and functional testing, documenting each repair-versus-replacement decision. Every return, diagnostic finding, repair step and final disposition was recorded in an asset-tracking system.",
+        media: [
+          {
+            type: "image",
+            src: "images/hivemapper-dashcam-board.jpg",
+            caption: "Opened dashcam with the main board, GNSS antenna and cameras",
+          },
+          {
+            type: "image",
+            src: "images/hivemapper-refurb-batch.jpg",
+            caption: "Batch of returned units on the bench for diagnostics",
+          },
+          {
+            type: "image",
+            src: "images/hivemapper-thermal-testing.jpg",
+            caption: "Thermal testing of an engineering prototype with thermocouples",
+          },
+          {
+            type: "image",
+            src: "images/hivemapper-compute-module.jpg",
+            caption: "Underside of a unit with the compute module and thermal pads",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "obd2",
+    num: "08",
     name: "OBD-II Bluetooth Accessory",
     age: "14",
     projects: [
@@ -255,7 +289,7 @@ const ERAS = [
   },
   {
     id: "eighth-grade",
-    num: "08",
+    num: "09",
     name: "",
     age: "12–13",
     layout: "columns",
