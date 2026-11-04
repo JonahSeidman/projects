@@ -169,8 +169,37 @@ const ERAS = [
     ],
   },
   {
-    id: "satellites",
+    id: "weather",
     num: "04",
+    name: "Hyperlocal Rain & Snow Prediction",
+    age: "17–present",
+    projects: [
+      {
+        title: "Forman Precipitation Forecast",
+        desc: "A precipitation forecasting system built specifically for Forman School in Litchfield, CT. It combines public NOAA radar and numerical forecast data (NWS gridded forecasts, HRRR, NBM, GFS, the 31-member GEFS ensemble and ECMWF) into a campus forecast of when rain or snow starts, when it peaks and how much falls. The dashboard blends model storm totals, turns the ensemble spread into exceedance probabilities and flags fog, thunder and wind. A planned on-site ground station will add temperature, humidity, pressure, wind, precipitation and snow-stake measurements to correct the forecast for the campus's elevation and terrain.",
+        media: [
+          {
+            type: "image",
+            src: "images/weather-dashboard.png",
+            caption: "Campus forecast dashboard for Forman School",
+          },
+          {
+            type: "image",
+            src: "images/weather-hourly-forecast.png",
+            caption: "Seven-day hourly temperature, precipitation chance and rainfall",
+          },
+          {
+            type: "image",
+            src: "images/weather-storm-models.png",
+            caption: "Storm totals by model and GEFS ensemble spread",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "satellites",
+    num: "05",
     name: "Satellites",
     age: "16–present",
     projects: [
@@ -196,7 +225,7 @@ const ERAS = [
   },
   {
     id: "personal",
-    num: "05",
+    num: "06",
     name: "Personal Projects",
     age: "15",
     projects: [
@@ -213,7 +242,7 @@ const ERAS = [
   },
   {
     id: "obd2",
-    num: "06",
+    num: "07",
     name: "OBD-II Bluetooth Accessory",
     age: "14",
     projects: [
@@ -226,7 +255,7 @@ const ERAS = [
   },
   {
     id: "eighth-grade",
-    num: "07",
+    num: "08",
     name: "",
     age: "12–13",
     layout: "columns",

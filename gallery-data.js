@@ -212,6 +212,21 @@ window.GALLERY_DATA = {
       "src": "images/rogers-lab-prototype-pair.jpg",
       "title": "",
       "description": ""
+    },
+    {
+      "src": "images/weather-dashboard.png",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/weather-hourly-forecast.png",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/weather-storm-models.png",
+      "title": "",
+      "description": ""
     }
   ]
 };
