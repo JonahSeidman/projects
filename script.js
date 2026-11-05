@@ -193,6 +193,21 @@ const ERAS = [
             src: "images/weather-storm-models.png",
             caption: "Storm totals by model and GEFS ensemble spread",
           },
+          {
+            type: "image",
+            src: "images/weather-station-wall.jpg",
+            caption: "Anemometer, wind vane and rain gauge on a campus wall",
+          },
+          {
+            type: "image",
+            src: "images/weather-rooftop-mast.jpg",
+            caption: "Rooftop sensor mast on a campus building",
+          },
+          {
+            type: "image",
+            src: "images/weather-gable-vane.jpg",
+            caption: "Wind sensor mounted on a roof gable",
+          },
         ],
       },
     ],

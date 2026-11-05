@@ -239,7 +239,22 @@ window.GALLERY_DATA = {
       "description": ""
     },
     {
+      "src": "images/weather-gable-vane.jpg",
+      "title": "",
+      "description": ""
+    },
+    {
       "src": "images/weather-hourly-forecast.png",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/weather-rooftop-mast.jpg",
+      "title": "",
+      "description": ""
+    },
+    {
+      "src": "images/weather-station-wall.jpg",
       "title": "",
       "description": ""
     },

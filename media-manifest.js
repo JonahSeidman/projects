@@ -609,6 +609,21 @@ window.MEDIA = {
   ],
   "xl": "images/web/weather-dashboard-2400.webp"
  },
+ "images/weather-gable-vane.jpg": {
+  "w": 2400,
+  "h": 1800,
+  "v": [
+   [
+    "images/web/weather-gable-vane-960.webp",
+    960
+   ],
+   [
+    "images/web/weather-gable-vane-1600.webp",
+    1600
+   ]
+  ],
+  "xl": "images/web/weather-gable-vane-2400.webp"
+ },
  "images/weather-hourly-forecast.png": {
   "w": 2824,
   "h": 1004,
@@ -623,6 +638,36 @@ window.MEDIA = {
    ]
   ],
   "xl": "images/web/weather-hourly-forecast-2400.webp"
+ },
+ "images/weather-rooftop-mast.jpg": {
+  "w": 2304,
+  "h": 1728,
+  "v": [
+   [
+    "images/web/weather-rooftop-mast-960.webp",
+    960
+   ],
+   [
+    "images/web/weather-rooftop-mast-1600.webp",
+    1600
+   ]
+  ],
+  "xl": "images/web/weather-rooftop-mast-2304.webp"
+ },
+ "images/weather-station-wall.jpg": {
+  "w": 2400,
+  "h": 1800,
+  "v": [
+   [
+    "images/web/weather-station-wall-960.webp",
+    960
+   ],
+   [
+    "images/web/weather-station-wall-1600.webp",
+    1600
+   ]
+  ],
+  "xl": "images/web/weather-station-wall-2400.webp"
  },
  "images/weather-storm-models.png": {
   "w": 2824,
